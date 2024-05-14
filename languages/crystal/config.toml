@@ -1,0 +1,4 @@
+name = "Crystal"
+grammar = "crystal"
+path_suffixes = ["cr"]
+line_comments = ["# "]
