@@ -2,7 +2,7 @@ authors = ["Margret Riegert <margret@eowyn.net>"]
 description = "Syntax highlighting for Crystal"
 id = "crystal"
 name = "Crystal"
-repository = "https://github.com/nobodywasishere/zed-crystal"
+repository = "https://github.com/crystal-lang-tools/zed-crystal"
 schema_version = 1
 version = "0.0.1"
 
