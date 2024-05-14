@@ -2,3 +2,23 @@ name = "Crystal"
 grammar = "crystal"
 path_suffixes = ["cr"]
 line_comments = ["# "]
+autoclose_before = "}])"
+brackets = [
+    { start = "{", end = "}", close = true, newline = true },
+    { start = "[", end = "]", close = true, newline = true },
+    { start = "(", end = ")", close = true, newline = true },
+    { start = "\"", end = "\"", close = true, newline = false, not_in = [
+        "comment",
+        "string",
+    ] },
+    { start = "'", end = "'", close = true, newline = false, not_in = [
+        "comment",
+        "string",
+    ] },
+    { start = "`", end = "`", close = true, newline = false, not_in = [
+        "comment",
+        "string",
+    ] },
+]
+collapsed_placeholder = "# ..."
+tab_size = 2

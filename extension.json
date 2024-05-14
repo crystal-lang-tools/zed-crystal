@@ -1,9 +1,0 @@
-{
-  "name": "Crystal Syntax",
-  "version": "0.0.1",
-  "authors": [
-    "Margret Riegert <margret@eowyn.net>"
-  ],
-  "description": "Syntax highlighting for Crystal",
-  "repository": "https://github.com/nobodywasishere/zed-crystal"
-}
