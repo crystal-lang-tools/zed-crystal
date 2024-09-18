@@ -1,0 +1,12 @@
+[package]
+name = "zed_crystal"
+version = "0.0.1"
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/crystal.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.1.0"
