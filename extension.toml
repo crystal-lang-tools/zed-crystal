@@ -6,15 +6,10 @@ repository = "https://github.com/crystal-lang-tools/zed-crystal"
 schema_version = 1
 version = "0.0.1"
 
-# Use Ruby grammar for now until Crystal grammar is more complete
-[grammars.ruby]
-repository = "https://github.com/tree-sitter/tree-sitter-ruby"
-commit = "7dbc1e2d0e2d752577655881f73b4573f3fe85d4"
+[grammars.crystal]
+repository = "https://github.com/crystal-lang-tools/tree-sitter-crystal"
+commit = "202da344c65a855fd9d31cfd51c46a20b2e9778d"
 
 [language_servers.crystalline]
 name = "crystalline"
 language = "Crystal"
-
-# [grammars.crystal]
-# commit = "61cc201c8eb3b6fd4d4eb3e0ac6c303a580eeb6b"
-# repository = "https://github.com/crystal-lang-tools/tree-sitter"

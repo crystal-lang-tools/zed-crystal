@@ -1,5 +1,5 @@
 name = "Crystal"
-grammar = "ruby"
+grammar = "crystal"
 path_suffixes = ["cr"]
 line_comments = ["# "]
 autoclose_before = "}])"
