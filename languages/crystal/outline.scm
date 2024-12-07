@@ -1,20 +1,30 @@
-(class
+(class_def
+    "class" @context
+    name: (_) @name) @item
+
+(struct_def
     "class" @context
     name: (_) @name) @item
 
 ((identifier) @context
-  (#match? @context "^(private|protected|public)$")) @item
+  (#match? @context "^(private|protected)$")) @item
 
-(method
+(method_def
     "def" @context
     name: (_) @name) @item
 
-(singleton_method
-    "def" @context
-    object: (_) @context
-    "." @context
-    name: (_) @name) @item
-
-(module
+(module_def
     "module" @context
+    name: (_) @name) @item
+
+(enum_def
+    "enum" @context
+    name: (_) @name) @item
+
+(annotation_def
+    "annotation" @context
+    name: (_) @name) @item
+
+(alias
+    "alias" @context
     name: (_) @name) @item

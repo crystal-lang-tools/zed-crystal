@@ -2,21 +2,23 @@
     (comment)* @context
     .
     [
-        (module
+        (module_def
             "module" @name
             name: (_) @name)
-        (method
+        (method_def
             "def" @name
-            name: (_) @name
-            body: (body_statement) @collapse)
-        (class
+            name: (_) @name)
+        (class_def
             "class" @name
             name: (_) @name)
-        (singleton_method
-            "def" @name
-            object: (_) @name
-            "." @name
-            name: (_) @name
-            body: (body_statement) @collapse)
+        (struct_def
+            "struct" @name
+            name: (_) @name)
+        (enum_def
+            "enum" @name
+            name: (_) @name)
+        (annotation_def
+            "annotation" @name
+            name: (_) @name)
         ] @item
     )
