@@ -3,14 +3,15 @@
     name: (_) @name) @item
 
 (struct_def
-    "class" @context
+    "struct" @context
     name: (_) @name) @item
-
-((identifier) @context
-  (#match? @context "^(private|protected)$")) @item
 
 (method_def
     "def" @context
+    name: (_) @name) @item
+
+(macro_def
+    "macro" @context
     name: (_) @name) @item
 
 (module_def
@@ -25,6 +26,25 @@
     "annotation" @context
     name: (_) @name) @item
 
+(lib_def
+	"lib" @context
+    name: (_) @name) @item
+
+(type_def
+	"type" @context
+	(constant) @name) @item
+
+(c_struct_def
+	"struct" @context
+    name: (_) @name) @item
+
+(union_def
+	"union" @context
+    name: (_) @name) @item
+
 (alias
     "alias" @context
     name: (_) @name) @item
+
+(const_assign
+    lhs: (_) @name) @item

@@ -5,11 +5,15 @@
 (enum_def "end" @end) @indent
 (annotation_def "end" @end) @indent
 (enum_def "end" @end) @indent
-(begin_block "end" @end) @indent
-;; (do_end_block "end" @end) @indent
+(begin "end" @end) @indent
+(block "end" @end) @indent
 
-(when "end" @end) @indent
-(in "end" @end) @indent
+(case
+  [
+    (when)
+    (in)
+  ] @indent
+  "end" @outdent)
 
 (then) @indent
 (call) @indent

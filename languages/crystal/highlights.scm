@@ -1,7 +1,5 @@
 (identifier) @variable
-
-((constant) @constant
- (#match? @constant "^[A-Z\\d_]+$"))
+(constant) @constant
 
 [
   "alias"
@@ -9,6 +7,8 @@
   "break"
   "case"
   "class"
+  "struct"
+  "macro"
   "def"
   "do"
   "end"
@@ -22,6 +22,8 @@
   "until"
   "when"
   "while"
+  "verbatim"
+  "for"
 ] @keyword
 ["return" "yield"] @keyword.return
 ["if" "else" "elsif"] @keyword.conditional
