@@ -1,4 +1,5 @@
 (method_def "end" @end) @indent
+(macro_def "end" @end) @indent
 (class_def "end" @end) @indent
 (module_def "end" @end) @indent
 (struct_def "end" @end) @indent

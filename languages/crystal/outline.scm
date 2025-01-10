@@ -1,3 +1,5 @@
+(comment) @annotation
+
 (class_def
     "class" @context
     name: (_) @name) @item

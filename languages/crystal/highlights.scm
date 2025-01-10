@@ -1,63 +1,117 @@
-(identifier) @variable
-(constant) @constant
-
 [
   "alias"
+  "annotation"
   "begin"
   "break"
   "case"
   "class"
-  "struct"
-  "macro"
   "def"
   "do"
+  "else"
+  "elsif"
   "end"
   "ensure"
+  "enum"
+  "extend"
+  "for"
+  "fun"
+  "if"
   "in"
+  "include"
+  "lib"
+  "macro"
   "module"
   "next"
+  "of"
+  "require"
   "rescue"
+  "return"
+  "select"
+  "struct"
   "then"
+  "type"
+  "union"
   "unless"
   "until"
+  "verbatim"
   "when"
   "while"
-  "verbatim"
-  "for"
+  "yield"
 ] @keyword
-["return" "yield"] @keyword.return
-["if" "else" "elsif"] @keyword.conditional
 
-(pseudo_constant) @constant.builtin
+(conditional
+  [
+    "?"
+    ":"
+  ] @punctuation)
+
+[
+  (private)
+  (protected)
+  "abstract"
+] @keyword
+
+(pseudo_constant) @constant
 
 ; literals
 (string) @string
 
 (symbol) @string.special.symbol
 
-(regex) @string.regex
+(regex
+  "/" @punctuation.delimiter) @string.regex
 
-(string_escape_sequence) @escape
+(heredoc_content) @string
 
-[(integer) (float)] @number
+[
+  (heredoc_start)
+  (heredoc_end)
+] @label
 
-[(true) (false)] @boolean
+(string_escape_sequence) @string.escape
 
-(nil) @constant.builtin
+[
+  (integer)
+  (float)
+] @number
 
-(interpolation
-  "#{" @punctuation.special
-  "}" @punctuation.special) @embedded
+[
+  (true)
+  (false)
+  (nil)
+  (self)
+] @variable.special
+
+(
+  (comment)+ @comment.doc
+  .
+  [
+    (class_def)
+    (struct_def)
+    (method_def)
+    (macro_def)
+    (module_def)
+    (enum_def)
+    (annotation_def)
+    (lib_def)
+    (type_def)
+    (c_struct_def)
+    (union_def)
+    (alias)
+    (const_assign)
+  ]
+)
 
 (comment) @comment
 
-; Operators
-
+; Operators and punctuation
 [
   "="
   "=>"
   "->"
 ] @operator
+
+(operator) @operator
 
 [
   ","
@@ -74,19 +128,67 @@
   "}"
 ] @punctuation.bracket
 
-(class_def name: [(constant) (generic_type)] @type)
+(index_call
+  method: (operator) @punctuation.bracket
+  [
+    "]"
+    "]?"
+  ] @punctuation.bracket)
 
-(module_def name: [(constant) (generic_type)] @module)
+[
+  "{%"
+  "%}"
+  "{{"
+  "}}"
+] @preproc
 
-(struct_def name: [(constant) (generic_type)] @type)
+(interpolation
+  "#{" @punctuation.delimiter
+  "}" @punctuation.delimiter)
 
-(enum_def name: [(constant)] @type)
+; Types
+[
+  (constant)
+  (generic_instance_type)
+  (generic_type)
+] @type
 
-(method_def name: [(identifier) (constant)] @function.method)
+(nilable_constant
+  "?" @type)
 
-(param name: [(identifier)] @variable.parameter)
+(nilable_type
+  "?" @type)
+
+(annotation
+  (constant) @attribute)
+
+(method_def
+  name: [
+    (identifier)
+    (constant)
+  ] @function)
+
+(macro_def
+  name: [
+    (identifier)
+    (constant)
+  ] @function)
+
+(macro_var) @variable
 
 [
   (class_var)
   (instance_var)
 ] @property
+
+(underscore) @variable.special
+
+(pointer_type
+  "*" @operator)
+
+; function calls
+(call
+  method: (_) @function)
+
+(implicit_object_call
+  method: (_) @function)

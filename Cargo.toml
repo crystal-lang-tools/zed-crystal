@@ -1,12 +1,12 @@
 [package]
-name = "zed_crystal"
-version = "0.0.1"
 edition = "2021"
+name = "zed_crystal"
 publish = false
+version = "0.0.2"
 
 [lib]
-path = "src/crystal.rs"
 crate-type = ["cdylib"]
+path = "src/crystal.rs"
 
 [dependencies]
 zed_extension_api = "0.1.0"

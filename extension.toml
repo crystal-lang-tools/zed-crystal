@@ -4,12 +4,12 @@ id = "crystal"
 name = "Crystal"
 repository = "https://github.com/crystal-lang-tools/zed-crystal"
 schema_version = 1
-version = "0.0.1"
+version = "0.0.2"
 
 [grammars.crystal]
+commit = "3f5b4d3ee4956742c8ba609e3d5a0f4677d5c319"
 repository = "https://github.com/crystal-lang-tools/tree-sitter-crystal"
-commit = "202da344c65a855fd9d31cfd51c46a20b2e9778d"
 
 [language_servers.crystalline]
-name = "crystalline"
 language = "Crystal"
+name = "crystalline"
