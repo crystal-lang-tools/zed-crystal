@@ -146,6 +146,8 @@
   "#{" @punctuation.delimiter
   "}" @punctuation.delimiter)
 
+(identifier) @variable
+
 ; Types
 [
   (constant)
@@ -192,3 +194,15 @@
 
 (implicit_object_call
   method: (_) @function)
+
+(call
+    method: (_) @keyword
+    arguments: (argument_list
+      [
+        (type_declaration
+          var: (_) @function)
+        (assign
+          lhs: (_) @function)
+        (_) @function
+      ])
+    (#match? @keyword "(class_)?(getter|setter|property)[?!]?"))

@@ -10,6 +10,8 @@
 
 (method_def
     "def" @context
+    ((_) @context
+    "." @context)?
     name: (_) @name) @item
 
 (macro_def
@@ -50,3 +52,8 @@
 
 (const_assign
     lhs: (_) @name) @item
+
+(call
+    method: (_) @context
+    arguments: (_) @name
+    (#match? @context "(class_)?(getter|setter|property)[?!]?")) @item

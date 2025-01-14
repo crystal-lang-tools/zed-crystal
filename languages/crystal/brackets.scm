@@ -1,6 +1,8 @@
 ("[" @open "]" @close)
 ("{" @open "}" @close)
 ("\"" @open "\"" @close)
+("{%" @open "%}" @close)
+("{{" @open "}}" @close)
 
 (begin "begin" @open "end" @close)
 (block "do" @open "end" @close)
