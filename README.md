@@ -1,10 +1,8 @@
-# Zed Crystal Support (WIP)
+# Crystal Lang Support for Zed
+
+Uses the Crystal lang tree-sitter found at [crystal-lang-tools/tree-sitter-crystal](https://github.com/crystal-lang-tools/tree-sitter-crystal),
+which is mostly complete, and can parse the majority of Crystal's own source code without errors.
+
+Also uses [Crystalline](https://github.com/elbywan/crystalline) for LSP functionality, if it is available in `$PATH`.
 
 ![](./assets/image.png)
-
-This is very much a work in progress as the tree-sitter is developed. Utilizes the tree-sitter found [here](https://github.com/crystal-lang-tools/tree-sitter).
-
-Dev installation:
-- Clone the repository, rename the folder to `crystal`
-- Install [crystalline](https://github.com/elbywan/crystalline/releases/tag/v0.14.1) and make sure it is on `$PATH`
-- In Zed, install a dev extension with Cmd+Shift+P > `install dev extension`
