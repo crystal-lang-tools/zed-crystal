@@ -82,6 +82,8 @@
   (self)
 ] @variable.special
 
+(comment) @comment
+
 (
   (comment)+ @comment.doc
   .
@@ -101,8 +103,6 @@
     (const_assign)
   ]
 )
-
-(comment) @comment
 
 ; Operators and punctuation
 [
@@ -206,3 +206,7 @@
         (_) @function
       ])
     (#match? @keyword "(class_)?(getter|setter|property)[?!]?"))
+
+(call
+    method: (_) @keyword
+    (#match? @keyword "record"))

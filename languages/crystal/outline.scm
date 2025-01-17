@@ -57,3 +57,10 @@
     method: (_) @context
     arguments: (_) @name
     (#match? @context "(class_)?(getter|setter|property)[?!]?")) @item
+
+
+(call
+    method: (_) @context
+    arguments: (argument_list
+        (constant) @name)
+    (#match? @context "record")) @item
