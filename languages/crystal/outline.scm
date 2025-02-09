@@ -1,20 +1,66 @@
-(class
+(comment) @annotation
+
+(class_def
     "class" @context
     name: (_) @name) @item
 
-((identifier) @context
-  (#match? @context "^(private|protected|public)$")) @item
-
-(method
-    "def" @context
+(struct_def
+    "struct" @context
     name: (_) @name) @item
 
-(singleton_method
+(method_def
     "def" @context
-    object: (_) @context
-    "." @context
+    ((_) @context
+    "." @context)?
     name: (_) @name) @item
 
-(module
+(macro_def
+    "macro" @context
+    name: (_) @name) @item
+
+(module_def
     "module" @context
     name: (_) @name) @item
+
+(enum_def
+    "enum" @context
+    name: (_) @name) @item
+
+(annotation_def
+    "annotation" @context
+    name: (_) @name) @item
+
+(lib_def
+	"lib" @context
+    name: (_) @name) @item
+
+(type_def
+	"type" @context
+	(constant) @name) @item
+
+(c_struct_def
+	"struct" @context
+    name: (_) @name) @item
+
+(union_def
+	"union" @context
+    name: (_) @name) @item
+
+(alias
+    "alias" @context
+    name: (_) @name) @item
+
+(const_assign
+    lhs: (_) @name) @item
+
+(call
+    method: (_) @context
+    arguments: (_) @name
+    (#match? @context "(class_)?(getter|setter|property)[?!]?")) @item
+
+
+(call
+    method: (_) @context
+    arguments: (argument_list
+        (constant) @name)
+    (#match? @context "record")) @item

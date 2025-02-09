@@ -1,15 +1,26 @@
-(method "end" @end) @indent
-(class "end" @end) @indent
-(module "end" @end) @indent
+(method_def "end" @end) @indent
+(macro_def "end" @end) @indent
+(class_def "end" @end) @indent
+(module_def "end" @end) @indent
+(struct_def "end" @end) @indent
+(enum_def "end" @end) @indent
+(annotation_def "end" @end) @indent
+(enum_def "end" @end) @indent
 (begin "end" @end) @indent
-(singleton_method "end" @end) @indent
-(do_block "end" @end) @indent
+(block "end" @end) @indent
+
+(case
+  [
+    (when)
+    (in)
+  ] @indent
+  "end" @outdent)
 
 (then) @indent
 (call) @indent
 
 (ensure) @outdent
-(rescue) @outdent
+("rescue") @outdent
 (else) @outdent
 
 

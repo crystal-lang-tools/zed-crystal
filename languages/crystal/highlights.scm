@@ -1,8 +1,6 @@
-; Keywords
-
 [
   "alias"
-  "and"
+  "annotation"
   "begin"
   "break"
   "case"
@@ -13,110 +11,64 @@
   "elsif"
   "end"
   "ensure"
+  "enum"
+  "extend"
   "for"
+  "fun"
   "if"
   "in"
+  "include"
+  "lib"
+  "macro"
   "module"
   "next"
-  "or"
+  "of"
+  "require"
   "rescue"
-  "retry"
   "return"
+  "select"
+  "struct"
   "then"
+  "type"
+  "union"
   "unless"
   "until"
+  "verbatim"
   "when"
   "while"
   "yield"
 ] @keyword
 
-((identifier) @keyword
- (#match? @keyword "^(private|protected|public)$"))
-
-; Function calls
-
-((identifier) @function.method.builtin
- (#eq? @function.method.builtin "require"))
-
-"defined?" @function.method.builtin
-
-(call
-  method: [(identifier) (constant)] @function.method)
-
-; Function definitions
-
-(alias (identifier) @function.method)
-(setter (identifier) @function.method)
-(method name: [(identifier) (constant)] @function.method)
-(singleton_method name: [(identifier) (constant)] @function.method)
-(method_parameters [
-  (identifier) @variable.parameter
-  (optional_parameter name: (identifier) @variable.parameter)
-  (keyword_parameter [name: (identifier) (":")] @variable.parameter)
-  ])
-
-(block_parameters (identifier) @variable.parameter)
-
-; Identifiers
-
-((identifier) @constant.builtin
- (#match? @constant.builtin "^__(FILE|LINE|ENCODING)__$"))
-
-(file) @constant.builtin
-(line) @constant.builtin
-(encoding) @constant.builtin
-
-(hash_splat_nil
-  "**" @operator
-) @constant.builtin
-
-(global_variable) @constant
-
-(constant) @type
-
-((constant) @constant
- (#match? @constant "^[A-Z\\d_]+$"))
-
-(superclass
-  (constant) @type.super)
-
-(superclass
-  (scope_resolution
-    (constant) @type.super))
-
-(superclass
-  (scope_resolution
-    (scope_resolution
-      (constant) @type.super)))
-
-(self) @variable.special
-(super) @variable.special
+(conditional
+  [
+    "?"
+    ":"
+  ] @punctuation)
 
 [
-  (class_variable)
-  (instance_variable)
-] @variable.member
+  (private)
+  (protected)
+  "abstract"
+] @keyword
 
+(pseudo_constant) @constant
 
-; Literals
+; literals
+(string) @string
+
+(symbol) @string.special.symbol
+
+(regex
+  "/" @punctuation.delimiter) @string.regex
+
+(heredoc_content) @string
 
 [
-  (string)
-  (bare_string)
-  (subshell)
-  (heredoc_body)
-  (heredoc_beginning)
-] @string
+  (heredoc_start)
+  (heredoc_end)
+] @label
 
-[
-  (simple_symbol)
-  (delimited_symbol)
-  (hash_key_symbol)
-  (bare_symbol)
-] @string.special.symbol
-
-(regex) @string.regex
-(escape_sequence) @escape
+(string_escape_sequence) @string.escape
 
 [
   (integer)
@@ -124,66 +76,47 @@
 ] @number
 
 [
-  (nil)
   (true)
   (false)
-] @constant.builtin
+  (nil)
+  (self)
+] @variable.special
 
 (comment) @comment
 
-; Operators
+(
+  (comment)+ @comment.doc
+  .
+  [
+    (class_def)
+    (struct_def)
+    (method_def)
+    (macro_def)
+    (module_def)
+    (enum_def)
+    (annotation_def)
+    (lib_def)
+    (type_def)
+    (c_struct_def)
+    (union_def)
+    (alias)
+    (const_assign)
+  ]
+)
 
+; Operators and punctuation
 [
-  "!"
-  "~"
-  "+"
-  "-"
-  "**"
-  "*"
-  "/"
-  "%"
-  "<<"
-  ">>"
-  "&"
-  "|"
-  "^"
-  ">"
-  "<"
-  "<="
-  ">="
-  "=="
-  "!="
-  "=~"
-  "!~"
-  "<=>"
-  "||"
-  "&&"
-  ".."
-  "..."
   "="
-  "**="
-  "*="
-  "/="
-  "%="
-  "+="
-  "-="
-  "<<="
-  ">>="
-  "&&="
-  "&="
-  "||="
-  "|="
-  "^="
   "=>"
   "->"
-  (operator)
 ] @operator
+
+(operator) @operator
 
 [
   ","
   ";"
   "."
-  "::"
 ] @punctuation.delimiter
 
 [
@@ -193,10 +126,87 @@
   "]"
   "{"
   "}"
-  "%w("
-  "%i("
 ] @punctuation.bracket
 
+(index_call
+  method: (operator) @punctuation.bracket
+  [
+    "]"
+    "]?"
+  ] @punctuation.bracket)
+
+[
+  "{%"
+  "%}"
+  "{{"
+  "}}"
+] @preproc
+
 (interpolation
-  "#{" @punctuation.special
-  "}" @punctuation.special) @embedded
+  "#{" @punctuation.delimiter
+  "}" @punctuation.delimiter)
+
+(identifier) @variable
+
+; Types
+[
+  (constant)
+  (generic_instance_type)
+  (generic_type)
+] @type
+
+(nilable_constant
+  "?" @type)
+
+(nilable_type
+  "?" @type)
+
+(annotation
+  (constant) @attribute)
+
+(method_def
+  name: [
+    (identifier)
+    (constant)
+  ] @function)
+
+(macro_def
+  name: [
+    (identifier)
+    (constant)
+  ] @function)
+
+(macro_var) @variable
+
+[
+  (class_var)
+  (instance_var)
+] @property
+
+(underscore) @variable.special
+
+(pointer_type
+  "*" @operator)
+
+; function calls
+(call
+  method: (_) @function)
+
+(implicit_object_call
+  method: (_) @function)
+
+(call
+    method: (_) @keyword
+    arguments: (argument_list
+      [
+        (type_declaration
+          var: (_) @function)
+        (assign
+          lhs: (_) @function)
+        (_) @function
+      ])
+    (#match? @keyword "(class_)?(getter|setter|property)[?!]?"))
+
+(call
+    method: (_) @keyword
+    (#match? @keyword "record"))
