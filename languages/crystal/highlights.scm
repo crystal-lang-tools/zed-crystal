@@ -195,6 +195,12 @@
 (implicit_object_call
   method: (_) @function)
 
+(method_proc
+  method: (_) @function)
+
+(assign_call
+  method: (_) @function)
+
 (call
     method: (_) @keyword
     arguments: (argument_list
