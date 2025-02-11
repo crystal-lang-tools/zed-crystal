@@ -8,7 +8,7 @@ Also uses [Crystalline](https://github.com/elbywan/crystalline) for LSP function
 ![](./assets/image.png)
 
 ## Using Crystal's Formatter
-Copy the following into Zed's settings file:
+To use the Crystal formatter directly instead of using the language server for formatting—for example, if a language server isn't available—copy the following into Zed's settings file:
 ```json
 "languages": {
   "Crystal": {
