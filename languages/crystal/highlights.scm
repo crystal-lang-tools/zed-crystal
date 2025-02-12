@@ -109,6 +109,23 @@
   "="
   "=>"
   "->"
+  "+="
+  "&+="
+  "-="
+  "&-="
+  "*="
+  "&*="
+  "/="
+  "//="
+  "%="
+  "|="
+  "&="
+  "^="
+  "**="
+  "<<="
+  ">>="
+  "||="
+  "&&="
 ] @operator
 
 (operator) @operator
@@ -127,6 +144,9 @@
   "{"
   "}"
 ] @punctuation.bracket
+
+(annotation
+	"@[" @punctuation.bracket)
 
 (index_call
   method: (operator) @punctuation.bracket
