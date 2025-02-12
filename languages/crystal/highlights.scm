@@ -1,5 +1,6 @@
 [
   "alias"
+  "alignof"
   "annotation"
   "begin"
   "break"
@@ -18,24 +19,33 @@
   "if"
   "in"
   "include"
+  "instance_alignof"
+  "instance_sizeof"
   "lib"
   "macro"
   "module"
   "next"
   "of"
+  "offsetof"
+  "out"
+  "pointerof"
   "require"
   "rescue"
   "return"
   "select"
+  "sizeof"
   "struct"
   "then"
   "type"
+  "typeof"
+  "uninitialized"
   "union"
   "unless"
   "until"
   "verbatim"
   "when"
   "while"
+  "with"
   "yield"
 ] @keyword
 
@@ -236,3 +246,6 @@
 (call
     method: (_) @keyword
     (#match? @keyword "record"))
+
+((identifier) @keyword
+  (#match? @keyword "(previous_def|super)"))
