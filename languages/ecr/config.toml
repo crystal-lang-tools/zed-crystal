@@ -1,0 +1,8 @@
+autoclose_before = ">})"
+block_comment = ["<%#", "%>"]
+brackets = [
+  {start = "<", end = ">", close = true, newline = true},
+]
+grammar = "ecr"
+name = "ECR"
+path_suffixes = ["ecr"]

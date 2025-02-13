@@ -1,5 +1,6 @@
 [
   "alias"
+  "alignof"
   "annotation"
   "begin"
   "break"
@@ -14,28 +15,38 @@
   "enum"
   "extend"
   "for"
+  "forall"
   "fun"
   "if"
   "in"
   "include"
+  "instance_alignof"
+  "instance_sizeof"
   "lib"
   "macro"
   "module"
   "next"
   "of"
+  "offsetof"
+  "out"
+  "pointerof"
   "require"
   "rescue"
   "return"
   "select"
+  "sizeof"
   "struct"
   "then"
   "type"
+  "typeof"
+  "uninitialized"
   "union"
   "unless"
   "until"
   "verbatim"
   "when"
   "while"
+  "with"
   "yield"
 ] @keyword
 
@@ -59,7 +70,12 @@
 (symbol) @string.special.symbol
 
 (regex
-  "/" @punctuation.delimiter) @string.regex
+  "/" @punctuation.bracket)
+
+(regex
+  (literal_content) @string.regex)
+
+(regex_modifier) @string.special.symbol
 
 (heredoc_content) @string
 
@@ -109,6 +125,23 @@
   "="
   "=>"
   "->"
+  "+="
+  "&+="
+  "-="
+  "&-="
+  "*="
+  "&*="
+  "/="
+  "//="
+  "%="
+  "|="
+  "&="
+  "^="
+  "**="
+  "<<="
+  ">>="
+  "||="
+  "&&="
 ] @operator
 
 (operator) @operator
@@ -127,6 +160,9 @@
   "{"
   "}"
 ] @punctuation.bracket
+
+(annotation
+	"@[" @punctuation.bracket)
 
 (index_call
   method: (operator) @punctuation.bracket
@@ -216,3 +252,6 @@
 (call
     method: (_) @keyword
     (#match? @keyword "record"))
+
+((identifier) @keyword
+  (#match? @keyword "(previous_def|super)"))

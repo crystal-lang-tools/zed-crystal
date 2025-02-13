@@ -1,3 +1,7 @@
+(regex
+  (literal_content) @injection.content
+  (#set! injection.language "regex"))
+
 (heredoc_body
   (heredoc_content) @injection.content
   (heredoc_end) @injection.language

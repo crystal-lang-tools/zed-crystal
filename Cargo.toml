@@ -2,7 +2,7 @@
 edition = "2021"
 name = "zed_crystal"
 publish = false
-version = "0.0.2"
+version = "0.0.3"
 
 [lib]
 crate-type = ["cdylib"]
