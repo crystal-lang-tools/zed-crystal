@@ -9,17 +9,32 @@ impl zed::Extension for CrystalExtension {
 
     fn language_server_command(
         &mut self,
-        _language_server_id: &zed::LanguageServerId,
+        language_server_id: &zed::LanguageServerId,
         worktree: &zed::Worktree,
     ) -> Result<zed::Command> {
-        let path = worktree.which("crystalline").ok_or_else(|| {
-            "Please install crystalline manually and make sure it is on $PATH.".to_string()
-        })?;
-        Ok(zed::Command {
-            command: path,
-            args: vec![],
-            env: Default::default(),
-        })
+        match language_server_id.as_ref() {
+            "crystalline" => {
+                let path = worktree.which("crystalline").ok_or_else(|| {
+                    "Please install crystalline manually and make sure it is on $PATH.".to_string()
+                })?;
+                Ok(zed::Command {
+                    command: path,
+                    args: vec![],
+                    env: Default::default(),
+                })
+            }
+            "ameba-ls" => {
+                let path = worktree.which("ameba-ls").ok_or_else(|| {
+                    "Please install ameba-ls manually and make sure it is on $PATH.".to_string()
+                })?;
+                Ok(zed::Command {
+                    command: path,
+                    args: vec![],
+                    env: Default::default(),
+                })
+            }
+            _ => Err("Unsupported language server".to_string()),
+        }
     }
 }
 

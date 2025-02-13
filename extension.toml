@@ -17,3 +17,7 @@ repository = "https://github.com/crystal-lang-tools/tree-sitter-ecr"
 [language_servers.crystalline]
 language = "Crystal"
 name = "crystalline"
+
+[language_servers.ameba-ls]
+language = "Crystal"
+name = "ameba-ls"
