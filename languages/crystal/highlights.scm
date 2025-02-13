@@ -219,6 +219,10 @@
   (instance_var)
 ] @property
 
+(named_expr
+  name: (_) @label
+  ":" @label)
+
 (underscore) @variable.special
 
 (pointer_type
