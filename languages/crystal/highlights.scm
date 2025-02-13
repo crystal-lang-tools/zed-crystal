@@ -15,6 +15,7 @@
   "enum"
   "extend"
   "for"
+  "forall"
   "fun"
   "if"
   "in"
@@ -69,7 +70,12 @@
 (symbol) @string.special.symbol
 
 (regex
-  "/" @punctuation.delimiter) @string.regex
+  "/" @punctuation.bracket)
+
+(regex
+  (literal_content) @string.regex)
+
+(regex_modifier) @string.special.symbol
 
 (heredoc_content) @string
 
