@@ -7,7 +7,7 @@ Also uses [Crystalline](https://github.com/elbywan/crystalline) for LSP function
 
 ![](./assets/image.png)
 
-## Using Crystal's Formatter
+## Extension Settings
 To use the Crystal formatter directly instead of using the language server for formatting—for example, if a language server isn't available—copy the following into Zed's settings file:
 ```json
 "languages": {
@@ -23,6 +23,14 @@ To use the Crystal formatter directly instead of using the language server for f
         ]
       }
     }
+  }
+}
+```
+To disable Crystalline, copy the following:
+```json
+"languages": {
+  "Crystal": {
+    "enable_language_server": false,
   }
 }
 ```
