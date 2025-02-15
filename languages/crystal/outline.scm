@@ -42,9 +42,19 @@
 	"struct" @context
     name: (_) @name) @item
 
+(c_struct_fields
+    (identifier) @name
+    ":" @context
+    type: (_) @context) @item
+
 (union_def
 	"union" @context
     name: (_) @name) @item
+
+(union_fields
+  (identifier) @name
+  ":" @context
+  type: (_) @context) @item
 
 (alias
     "alias" @context
