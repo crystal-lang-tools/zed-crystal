@@ -53,11 +53,14 @@
 (const_assign
     lhs: (_) @name) @item
 
+(enum_def
+	body: (expressions
+    	(constant) @name @item))
+
 (call
     method: (_) @context
     arguments: (_) @name
     (#match? @context "(class_)?(getter|setter|property)[?!]?")) @item
-
 
 (call
     method: (_) @context
