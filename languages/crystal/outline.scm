@@ -14,6 +14,14 @@
     "." @context)?
     name: (_) @name) @item
 
+(fun_def
+	"fun" @context
+	name: (_) @name
+    .
+    ("=" @context
+    .
+    (_) @context)?) @item
+
 (macro_def
     "macro" @context
     name: (_) @name) @item
