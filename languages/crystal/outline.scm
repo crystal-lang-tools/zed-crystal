@@ -36,7 +36,7 @@
 
 (type_def
 	"type" @context
-	(constant) @name) @item
+	name: (constant) @name) @item
 
 (c_struct_def
 	"struct" @context
