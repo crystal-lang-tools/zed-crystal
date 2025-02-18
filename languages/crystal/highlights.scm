@@ -65,7 +65,10 @@
 (pseudo_constant) @constant
 
 ; literals
-(string) @string
+[
+  (string)
+  (char)
+] @string
 
 (symbol) @string.special.symbol
 
@@ -251,7 +254,7 @@
           lhs: (_) @function)
         (_) @function
       ])
-    (#match? @keyword "(class_)?(getter|setter|property)[?!]?"))
+    (#match? @keyword "^(class_)?(getter|setter|property)[?!]?$"))
 
 (call
     method: (_) @keyword
