@@ -78,7 +78,7 @@
 (call
     method: (_) @context
     arguments: (_) @name
-    (#match? @context "(class_)?(getter|setter|property)[?!]?")) @item
+    (#match? @context "^(class_)?(getter|setter|property)[?!]?$")) @item
 
 (call
     method: (_) @context
