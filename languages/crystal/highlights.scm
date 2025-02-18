@@ -255,7 +255,7 @@
 
 (call
     method: (_) @keyword
-    (#match? @keyword "record"))
+    (#match? @keyword "^(record|is_a\\?|as|as\\?|responds_to\\?|nil\\?|\\!)$"))
 
 ((identifier) @keyword
-  (#match? @keyword "(previous_def|super)"))
+  (#match? @keyword "^(previous_def|super)$"))
