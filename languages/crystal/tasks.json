@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Crystal: run all specs in project",
+    "command": "crystal",
+    "args": ["spec", "-p"],
+    "env": { "GC_DONT_GC": "1" },
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "Crystal: run all specs in file",
+    "command": "crystal",
+    "args": ["spec", "$ZED_FILE", "-p"],
+    "env": { "GC_DONT_GC": "1" }
+  },
+  {
+    "label": "Crystal: run spec on current line",
+    "command": "crystal",
+    "args": ["spec", "$ZED_FILE", "--line=$ZED_ROW", "-p"],
+    "env": { "GC_DONT_GC": "1" },
+    "tags": ["crystal-spec"]
+  }
+]
