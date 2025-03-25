@@ -18,5 +18,15 @@
     "args": ["spec", "$ZED_FILE", "--line=$ZED_ROW", "-p"],
     "env": { "GC_DONT_GC": "1" },
     "tags": ["crystal-spec"]
+  },
+  {
+    "label": "Shards: install",
+    "command": "shards",
+    "args": ["install"]
+  },
+  {
+    "label": "Shards: run",
+    "command": "shards",
+    "args": ["run"]
   }
 ]
