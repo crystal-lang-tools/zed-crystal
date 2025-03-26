@@ -7,7 +7,7 @@ schema_version = 1
 version = "0.0.3"
 
 [grammars.crystal]
-commit = "cd3ae0751a58bca9fe875e580102578f5228a5a1"
+commit = "2af0dc12e65b98ea4c9737f645776277ef8d8f55"
 repository = "https://github.com/crystal-lang-tools/tree-sitter-crystal"
 
 [grammars.ecr]

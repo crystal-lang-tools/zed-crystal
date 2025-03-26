@@ -1,7 +1,17 @@
 [
+  ","
+  ";"
+  "."
+  ":"
+  "*"
+  "**"
+] @punctuation.delimiter
+
+[
   "alias"
   "alignof"
   "annotation"
+  "asm"
   "begin"
   "break"
   "case"
@@ -65,12 +75,34 @@
 (pseudo_constant) @constant
 
 ; literals
-[
-  (string)
-  (char)
-] @string
+(char
+    ["'" (literal_content)] @string.special)
 
-(symbol) @string.special.symbol
+(char
+    (escape_sequence) @string.escape)
+
+(string
+    ["\"" (literal_content)] @string)
+
+(string
+  (escape_sequence) @string.escape)
+
+(symbol
+  [
+    ":"
+    ":\""
+    "\""
+    (literal_content)
+  ] @string.special.symbol)
+
+(symbol
+  (escape_sequence) @string.escape)
+
+(command
+    ["`" (literal_content)] @string.special)
+
+(command
+  (escape_sequence) @string.escape)
 
 (regex
   "/" @punctuation.bracket)
@@ -80,14 +112,16 @@
 
 (regex_modifier) @string.special.symbol
 
-(heredoc_content) @string
+(heredoc_body
+    (literal_content) @string)
+
+(heredoc_body
+    (escape_sequence) @string.escape)
 
 [
   (heredoc_start)
   (heredoc_end)
-] @label
-
-(string_escape_sequence) @string.escape
+] @string.escape
 
 [
   (integer)
@@ -110,6 +144,7 @@
     (class_def)
     (struct_def)
     (method_def)
+    (abstract_method_def)
     (macro_def)
     (module_def)
     (enum_def)
@@ -128,44 +163,19 @@
   "="
   "=>"
   "->"
-  "+="
-  "&+="
-  "-="
-  "&-="
-  "*="
-  "&*="
-  "/="
-  "//="
-  "%="
-  "|="
-  "&="
-  "^="
-  "**="
-  "<<="
-  ">>="
-  "||="
-  "&&="
+  "&"
+  (operator)
 ] @operator
-
-(operator) @operator
-
-[
-  ","
-  ";"
-  "."
-] @punctuation.delimiter
 
 [
   "("
   ")"
   "["
+  "@["
   "]"
   "{"
   "}"
 ] @punctuation.bracket
-
-(annotation
-	"@[" @punctuation.bracket)
 
 (index_call
   method: (operator) @punctuation.bracket
@@ -173,6 +183,9 @@
     "]"
     "]?"
   ] @punctuation.bracket)
+
+(block
+    "|" @punctuation.bracket)
 
 [
   "{%"
@@ -187,6 +200,8 @@
 
 (identifier) @variable
 
+; TODO: {splat,double_splat,block,fun}_param + rescue param
+
 ; Types
 [
   (constant)
@@ -200,20 +215,24 @@
 (nilable_type
   "?" @type)
 
+(union_type
+    "|" @operator)
+
 (annotation
   (constant) @attribute)
 
 (method_def
-  name: [
-    (identifier)
-    (constant)
-  ] @function)
+  name: (identifier) @function)
 
 (macro_def
-  name: [
-    (identifier)
-    (constant)
-  ] @function)
+  name: (identifier) @function)
+
+(abstract_method_def
+  name: (identifier) @function)
+
+(fun_def
+  name: (identifier) @function
+  real_name: (identifier)? @function)
 
 (macro_var) @variable
 
@@ -223,13 +242,13 @@
 ] @property
 
 (named_expr
-  name: (_) @label
-  ":" @label)
+  name: (identifier) @property
+  ":" @property)
+
+(named_type
+    name: (identifier) @property)
 
 (underscore) @variable.special
-
-(pointer_type
-  "*" @operator)
 
 ; function calls
 (call

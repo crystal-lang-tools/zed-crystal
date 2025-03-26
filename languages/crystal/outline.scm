@@ -14,6 +14,13 @@
     "." @context)?
     name: (_) @name) @item
 
+(abstract_method_def
+    "abstract" @context
+    "def" @context
+    ((_) @context
+    "." @context)?
+    name: (_) @name) @item
+
 (fun_def
 	"fun" @context
 	name: (_) @name

@@ -28,6 +28,9 @@
         (method_def
             "def" @name
             name: (_) @name)
+        (abstract_method_def
+            "def" @name
+            name: (_) @name)
         (module_def
             "module" @name
             name: (_) @name)
