@@ -13,6 +13,16 @@ impl zed::Extension for CrystalExtension {
         worktree: &zed::Worktree,
     ) -> Result<zed::Command> {
         match language_server_id.as_ref() {
+            "liger" => {
+                let path = worktree.which("liger").ok_or_else(|| {
+                    "Please install liger manually and make sure it is on $PATH.".to_string()
+                })?;
+                Ok(zed::Command {
+                    command: path,
+                    args: vec![],
+                    env: Default::default(),
+                })
+            }
             "crystalline" => {
                 let path = worktree.which("crystalline").ok_or_else(|| {
                     "Please install crystalline manually and make sure it is on $PATH.".to_string()

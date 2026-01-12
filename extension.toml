@@ -21,3 +21,7 @@ name = "crystalline"
 [language_servers.ameba-ls]
 language = "Crystal"
 name = "ameba-ls"
+
+[language_servers.liger]
+language = "Crystal"
+name = "liger"

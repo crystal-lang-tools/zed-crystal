@@ -3,7 +3,7 @@
 Uses the Crystal lang tree-sitter found at [crystal-lang-tools/tree-sitter-crystal](https://github.com/crystal-lang-tools/tree-sitter-crystal),
 which is mostly complete, and can parse the majority of Crystal's own source code without errors.
 
-Also uses [Crystalline](https://github.com/elbywan/crystalline) and [ameba-ls](https://github.com/crystal-lang-tools/ameba-ls) for LSP functionality, if they're available in `$PATH`.
+Also uses [Crystalline](https://github.com/elbywan/crystalline), [ameba-ls](https://github.com/crystal-lang-tools/ameba-ls), and [liger](https://github.com/navid-m/liger) for LSP functionality, if they're available in `$PATH`.
 
 ![](./assets/image.png)
 
