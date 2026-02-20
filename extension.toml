@@ -4,7 +4,7 @@ id = "crystal"
 name = "Crystal"
 repository = "https://github.com/crystal-lang-tools/zed-crystal"
 schema_version = 1
-version = "0.0.4"
+version = "0.0.5"
 
 [grammars.crystal]
 commit = "2af0dc12e65b98ea4c9737f645776277ef8d8f55"
