@@ -25,6 +25,11 @@
     "args": ["install"]
   },
   {
+    "label": "Shards: update",
+    "command": "shards",
+    "args": ["update"]
+  },
+  {
     "label": "Shards: run",
     "command": "shards",
     "args": ["run"]
