@@ -315,7 +315,7 @@ dependencies = [
   "zed_extension_api",
 ]
 name = "zed_crystal"
-version = "0.0.5"
+version = "0.0.6"
 
 [[package]]
 checksum = "594fd10dd0f2f853eb243e2425e7c95938cef49adb81d9602921d002c5e6d9d9"
