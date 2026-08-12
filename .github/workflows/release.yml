@@ -1,0 +1,21 @@
+name: Release Zed extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  bump-zed-extension:
+    name: Bump Zed extension
+    runs-on: ubuntu-latest
+    steps:
+      - uses: huacnlee/zed-extension-action@v2
+        with:
+          extension-name: crystal
+          push-to: crystal-lang-tools/zed-extensions
+        env:
+          COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
