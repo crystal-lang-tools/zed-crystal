@@ -23,6 +23,7 @@ jobs:
         with:
           extension-name: crystal
           push-to: crystal-lang-tools/zed-extensions
+          create-pullrequest: false
           tag: ${{ inputs.tag || github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
