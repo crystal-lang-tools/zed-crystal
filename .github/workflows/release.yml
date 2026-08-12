@@ -3,7 +3,13 @@ name: Release Zed extension
 on:
   push:
     tags:
-      - "v*"
+      - "*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to publish (for example, 0.0.6)
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -17,5 +23,6 @@ jobs:
         with:
           extension-name: crystal
           push-to: crystal-lang-tools/zed-extensions
+          tag: ${{ inputs.tag || github.ref_name }}
         env:
           COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
