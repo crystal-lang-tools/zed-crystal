@@ -25,4 +25,5 @@ jobs:
           push-to: crystal-lang-tools/zed-extensions
           tag: ${{ inputs.tag || github.ref_name }}
         env:
+          GITHUB_TOKEN: ${{ github.token }}
           COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
